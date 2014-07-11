@@ -81,6 +81,10 @@
  */
 - (void)globeViewController:(WhirlyGlobeViewController *)viewC willStopMoving:(MaplyCoordinate *)corners;
 
+// long press additions
+
+- (void)globeViewController:(WhirlyGlobeViewController *)viewC didLongPressAt:(WGCoordinate)coord;
+
 @end
 
 /** @brief This view controller implements a 3D interactive globe.

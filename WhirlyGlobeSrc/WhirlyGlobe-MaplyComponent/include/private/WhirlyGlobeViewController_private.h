@@ -40,7 +40,11 @@
     PanDelegateFixed *panDelegate;
     WhirlyGlobeTapDelegate *tapDelegate;
     WhirlyGlobeRotateDelegate *rotateDelegate;
-    AnimateViewRotation *animateRotation;    
+    AnimateViewRotation *animateRotation;
+    
+    // Long press addition
+    
+    WhirlyGlobeLongPressDelegate *longPressDelegate;
 
     // Set when we're animating the view point but we know where it's going
     bool knownAnimateEndRot;
