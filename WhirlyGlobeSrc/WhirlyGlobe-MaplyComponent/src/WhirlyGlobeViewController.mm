@@ -84,6 +84,9 @@ using namespace WhirlyGlobe;
     doubleTapDragDelegate = nil;
     
     delegateRespondsToViewUpdate = false;
+
+    // long press additions
+    longPressDelegate = nil;
 }
 
 - (void) dealloc
@@ -145,7 +148,10 @@ using namespace WhirlyGlobe;
     // These will activate the appropriate gesture
     self.pinchGesture = true;
     self.rotateGesture = true;
-        
+    
+    // long press additions
+    longPressDelegate = [WhirlyGlobeLongPressDelegate longPressDelegateForView:glView globeView:globeView];
+    
     self.selection = true;
     
     if(_doubleTapZoomGesture)
@@ -220,6 +226,8 @@ using namespace WhirlyGlobe;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationDidStart:) name:kWKViewAnimationStarted object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationDidEnd:) name:kWKViewAnimationEnded object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationWillEnd:) name:kAnimateViewMomentum object:nil];
+    // Long press stuff
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(longPressOnGlobe:) name:WhirlyGlobeLongPressMsg object:nil];
 }
 
 - (void)unregisterForEvents
@@ -238,6 +246,8 @@ using namespace WhirlyGlobe;
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kWKViewAnimationStarted object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kWKViewAnimationEnded object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kAnimateViewMomentum object:nil];
+    // Long press stuff
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:WhirlyGlobeLongPressMsg object:nil];
 }
 
 /// Add a spherical earth layer with the given set of base images
@@ -1139,5 +1149,23 @@ using namespace WhirlyGlobe;
     
 }
 
+<<<<<<< HEAD
+=======
+#pragma mark - Additions
+
+// Called when the user taps on the globe.  We'll rotate to that position
+- (void) longPressOnGlobe:(NSNotification *)note
+{
+    WhirlyGlobeTapMessage *msg = note.object;
+    
+    WGCoordinate coord;
+    coord.x = msg.whereGeo.lon();
+    coord.y = msg.whereGeo.lat();
+    
+    if ([_delegate respondsToSelector:@selector(globeViewController:didLongPressAt:)]) {
+        [_delegate globeViewController:self didLongPressAt:coord];
+    }
+}
+>>>>>>> long
 
 @end

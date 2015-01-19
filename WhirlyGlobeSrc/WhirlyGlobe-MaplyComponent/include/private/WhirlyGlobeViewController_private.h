@@ -47,6 +47,9 @@
     WhirlyGlobeDoubleTapDelegate *doubleTapDelegate;
     WhirlyGlobeTwoFingerTapDelegate *twoFingerTapDelegate;
     WhirlyGlobeDoubleTapDragDelegate *doubleTapDragDelegate;
+    // Long press addition
+    
+    WhirlyGlobeLongPressDelegate *longPressDelegate;
 
     // Set when we're animating the view point but we know where it's going
     bool knownAnimateEndRot;
