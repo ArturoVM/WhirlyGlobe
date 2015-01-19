@@ -152,7 +152,7 @@ using namespace WhirlyGlobe;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationDidEnd:) name:kWKViewAnimationEnded object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationWillEnd:) name:kAnimateViewMomentum object:nil];
     // Long press stuff
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(longPressOnGlobe) name:WhirlyGlobeLongPressMsg object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(longPressOnGlobe:) name:WhirlyGlobeLongPressMsg object:nil];
 }
 
 - (void)unregisterForEvents
