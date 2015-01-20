@@ -1149,8 +1149,6 @@ using namespace WhirlyGlobe;
     
 }
 
-<<<<<<< HEAD
-=======
 #pragma mark - Additions
 
 // Called when the user taps on the globe.  We'll rotate to that position
@@ -1166,6 +1164,5 @@ using namespace WhirlyGlobe;
         [_delegate globeViewController:self didLongPressAt:coord];
     }
 }
->>>>>>> long
 
 @end
